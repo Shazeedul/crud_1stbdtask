@@ -29,6 +29,10 @@
           </div>
         </div></br>
         
+        <img src="<?php echo e(asset('storage/'.$customer->image)); ?>" widh="70" height="70">
+        <input type="file" accept="image/png, image/gif, image/jpeg" class="col-lg-10 form-control" id="image" placeholder="Image" name="image"></br></br>
+        
+        
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
    

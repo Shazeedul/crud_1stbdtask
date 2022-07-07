@@ -27,7 +27,7 @@ class CustomerValidationRequest extends FormRequest
             $rules = [
                 'name' => 'required',
                 'email' => 'required',
-                'status' => 'required'
+                'status' => 'required',
             ];
         }else{
             $rules = [
