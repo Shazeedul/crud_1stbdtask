@@ -9,7 +9,7 @@
             <br/>
             <br/>
 
-            {{-- @if ($maessage = Session::get('success'))
+            {{-- @if ($maessage = Session::get('status'))
                 <div class="alert alert-success">
                     <p>{{$message}}</p>
                 </div>

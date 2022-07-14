@@ -51,7 +51,7 @@ class CustomerController extends Controller
         ]);
 
         return redirect()->route('customers.index')
-            ->with('success', 'Project created successfully.');
+            ->with('status', 'Customer created successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class CustomerController extends Controller
         $customer->update($request->all());
 
         return redirect()->route('customers.index')
-            ->with('success', 'Project updated successfully');
+            ->with('status', 'Customer updated successfully');
     }
 
     /**
@@ -104,6 +104,6 @@ class CustomerController extends Controller
         $customer->delete();
 
         return redirect()->route('customers.index')
-            ->with('success', 'Project deleted successfully');
+            ->with('status', 'Customer deleted successfully');
     }
 }

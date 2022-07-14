@@ -6,9 +6,42 @@
 </head>
 <body>
   
-<div class="container">
+<div class="container mt-5">
+    <div class="col-md-12">
+        <?php if(session('status')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php echo e(session('status')); ?>
+
+                <button type="button" class="close float-end" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php if($errors->any()): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo e($errors->first()); ?>
+
+            <button type="button" class="close float-end" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php endif; ?>
+    </div> 
     <?php echo $__env->yieldContent('content'); ?>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   
+<script type="text/javascript">
+$(document).ready(function () {
+ 
+    window.setTimeout(function() {
+        $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
+     
+    });
+</script>
 </body>
 </html><?php /**PATH C:\Users\admin\Documents\crud-app\resources\views/customers/layout.blade.php ENDPATH**/ ?>
