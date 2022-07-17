@@ -1,0 +1,1 @@
+<h1>Create</h1><?php /**PATH C:\Users\admin\Documents\crud-app\resources\views/posts/create.blade.php ENDPATH**/ ?>

@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('customers', 'App\Http\Controllers\CustomerController');
+
+Route::resource('posts', 'App\Http\Controllers\PostController');

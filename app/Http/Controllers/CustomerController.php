@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CustomerValidationRequest;
+use Illuminate\Support\Facades\File;
 
 class CustomerController extends Controller
 {
@@ -17,8 +17,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::latest()->paginate(5);
-        return view('projects.index', ['customers'=>$customers]);
+        $customer = Customer::latest()->paginate(5);
+        return view('customers.index', ['customer'=>$customer]);
     }
 
     /**
@@ -28,7 +28,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('customers.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('projects.show', ['customer'=>$customer]);
+        return view('customers.show', ['customer'=>$customer]);
     }
 
     /**
@@ -73,7 +73,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('projects.edit', ['customer'=>$customer]);
+        return view('customers.edit', ['customer'=>$customer]);
     }
 
     /**
@@ -87,7 +87,19 @@ class CustomerController extends Controller
     {
         $request->validated();
 
-        $customer->update($request->all());
+        $customer->fill($request->all());
+
+        if ($request->hasFile('image')) {
+            $destination = 'storage/' . $customer->image;
+            // Deletes the file if it exists
+            if( File::exists($destination) ) {
+                File::delete($destination);
+            }
+            $customer->image = Storage::put('customer',$request->file('image'));
+        
+        }
+
+        $customer->save();
 
         return redirect()->route('customers.index')
             ->with('status', 'Customer updated successfully');
