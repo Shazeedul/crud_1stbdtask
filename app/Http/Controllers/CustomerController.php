@@ -10,33 +10,20 @@ use Illuminate\Support\Facades\File;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $customer = Customer::latest()->paginate(5);
         return view('customers.index', ['customer'=>$customer]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('customers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(CustomerValidationRequest $request)
     {
         $request->validated();
@@ -54,12 +41,7 @@ class CustomerController extends Controller
             ->with('status', 'Customer created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Customer $customer)
     {
         return view('customers.show', ['customer'=>$customer]);

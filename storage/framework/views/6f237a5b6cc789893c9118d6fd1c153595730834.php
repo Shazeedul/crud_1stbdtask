@@ -25,19 +25,27 @@
                 </thead>
                 <tbody>
                 
+                <?php $i=1;
+                ?>
+                <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <td>1</td>
-                    <td>Laravel</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laboriosam at nesciunt esse temporibus consequatur libero tempore placeat ad non eum, maiores, illo dolorem rerum distinctio deserunt ab voluptate tempora.</td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo e($i++); ?></td>
+                    <td><?php echo e($item->title); ?></td>
+                    <td><?php echo e($item->description); ?></td>
+                    <td><img src="<?php echo e(asset('storage/'.$item->post_img)); ?>" widh="50" height="50" alt="" title=""></td>
+                    <td><?php echo e($item->customer->name); ?></td>
                     <td><button class="btn btn-danger btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Deactive</button></td>
                     <td>
-                        <a href="#" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                        <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                        <button class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <a href="<?php echo e(route('posts.show', $item->id)); ?>" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                        <a href="<?php echo e(route('posts.edit', $item->id)); ?>" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <form action="<?php echo e(route('posts.destroy', $item->id)); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
+                                <button class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        </form>
                     </td>
                 </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>

@@ -16,17 +16,14 @@ class PostValidationRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'post_img' => 'required',
+            'customer_id' => 'required',
         ];
     }
 }

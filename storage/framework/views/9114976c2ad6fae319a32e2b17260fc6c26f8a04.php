@@ -1,0 +1,1 @@
+<h1>Show</h1><?php /**PATH C:\Users\admin\Documents\crud-app\resources\views/posts/show.blade.php ENDPATH**/ ?>

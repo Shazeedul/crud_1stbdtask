@@ -56,19 +56,27 @@
                     </td>
                 </tr>
                 @endforeach --}}
+                @php $i=1;
+                @endphp
+                @foreach ($post as $item)
                 <tr>
-                    <td>1</td>
-                    <td>Laravel</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laboriosam at nesciunt esse temporibus consequatur libero tempore placeat ad non eum, maiores, illo dolorem rerum distinctio deserunt ab voluptate tempora.</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$i++}}</td>
+                    <td>{{$item->title}}</td>
+                    <td>{{$item->description}}</td>
+                    <td><img src="{{ asset('storage/'.$item->post_img) }}" widh="50" height="50" alt="" title=""></td>
+                    <td>{{$item->customer->name}}</td>
                     <td><button class="btn btn-danger btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Deactive</button></td>
                     <td>
-                        <a href="#" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                        <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                        <button class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <a href="{{ route('posts.show', $item->id) }}" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                        <a href="{{ route('posts.edit', $item->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <form action="{{ route('posts.destroy', $item->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                                <button class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        </form>
                     </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

@@ -1,0 +1,1 @@
+<h1>Edit</h1><?php /**PATH C:\Users\admin\Documents\crud-app\resources\views/posts/edit.blade.php ENDPATH**/ ?>
