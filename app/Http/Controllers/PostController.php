@@ -12,11 +12,7 @@ class PostController extends Controller
     
     public function index()
     {
-        // $post = Post::all();
         $posts = Post::with('customer')->get();
-        // $customers = Customer::with('post')->get();
-
-        // dd($posts);
 
         return view('posts.index', ['post'=>$posts]);
     }

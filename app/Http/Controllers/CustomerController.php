@@ -47,24 +47,13 @@ class CustomerController extends Controller
         return view('customers.show', ['customer'=>$customer]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Customer $customer)
     {
         return view('customers.edit', ['customer'=>$customer]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(CustomerValidationRequest $request, Customer $customer)
     {
         $request->validated();

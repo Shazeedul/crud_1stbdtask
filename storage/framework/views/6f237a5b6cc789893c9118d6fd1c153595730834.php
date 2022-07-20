@@ -24,7 +24,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                
                 <?php $i=1;
                 ?>
                 <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
