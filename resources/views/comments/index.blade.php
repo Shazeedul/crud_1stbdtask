@@ -19,31 +19,21 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Image</th>
-                            <th>Status</th>
+                            <th>Comment</th>
+                            <th>Post</th>
+                            <th>User Name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {{-- @php $i=1;
+                    @php $i=1;
                     @endphp
-                    @foreach ($customer as $item)
-                        
-                    
+                    @foreach ($comments as $item)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td><img src="{{ asset('storage/'.$item->image) }}" widh="50" height="50" alt="" title=""></td>
-                        <td>
-                            @if ($item->status==0)
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Deactive</button>
-                            @else
-                                <button class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Active</button>
-                            @endif
-                        </td>
+                        <td>{{$item->comment}}</td>
+                        <td>{{$item->post->title}}</td>
+                        <td>{{$item->post->customer->name}}</td>
                         <td>
                                 <a href="{{ route('customers.show', $item->id) }}" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                 <a href="{{ route('customers.edit', $item->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -54,7 +44,7 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                     </tbody>
                 </table>
             </div>

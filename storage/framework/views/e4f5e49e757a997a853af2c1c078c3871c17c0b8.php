@@ -15,15 +15,32 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Image</th>
-                            <th>Status</th>
+                            <th>Comment</th>
+                            <th>Post</th>
+                            <th>User Name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
+                    <?php $i=1;
+                    ?>
+                    <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td><?php echo e($i++); ?></td>
+                        <td><?php echo e($item->comment); ?></td>
+                        <td><?php echo e($item->post->title); ?></td>
+                        <td><?php echo e($item->post->customer->name); ?></td>
+                        <td>
+                                <a href="<?php echo e(route('customers.show', $item->id)); ?>" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                <a href="<?php echo e(route('customers.edit', $item->id)); ?>" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                            <form action="<?php echo e(route('customers.destroy', $item->id)); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
+                                <button class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>

@@ -11,12 +11,16 @@ class CommentController extends Controller
     
     public function index()
     {
-        $post = Post::find(1);
+        // $posts = Post::with('comments')->get();
+        $comments = Comment::with('post')->get();
 
-        $comments = $post->comments;
+        // $comments = Comment::all();
+        $posts = Post::all();
         
-        dd($comments);
-        return view('comments.index');
+        // dd($post);
+
+        
+        return view('comments.index', ['posts' => $posts, 'comments' => $comments]);
     }
 
     

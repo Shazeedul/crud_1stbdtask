@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +22,5 @@ Route::resource('customers', 'App\Http\Controllers\CustomerController');
 Route::resource('posts', 'App\Http\Controllers\PostController');
 
 Route::resource('comments', 'App\Http\Controllers\CommentController');
+
+Route::resource('categories', 'App\Http\Controllers\CategoryController');
