@@ -60,7 +60,7 @@ class PostController extends Controller
     public function update(PostValidationRequest $request, Post $post)
     {
         return redirect()->route('posts.index')
-            ->with('status', 'Customer updated successfully');
+            ->with('status', 'Post updated successfully');
     }
 
     
@@ -69,6 +69,6 @@ class PostController extends Controller
         $post->delete();
         
         return redirect()->route('posts.index')
-            ->with('status', 'Customer deleted successfully');
+            ->with('status', 'Post deleted successfully');
     }
 }
